@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobner Bus Service - Precision Travel Redefined (8306420502)</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* 1. Custom Typography and Global Styling */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;700;900&family=Roboto:wght@300;400;700&display=swap');
+        
+        body {
+            font-family: 'Roboto', sans-serif; /* Clean Sans-Serif Body */
+            background-color: #FFFFFF; /* Pure White Default Background */
+            color: #151515;
+        }
+
+        h1, h2, h3, .heading-font {
+            font-family: 'Poppins', sans-serif; /* Modern, Bold Headers */
+        }
+
+        /* 2. Custom Color Palette (Deep Charcoal / Chrome Blue) */
+        .color-primary-dark { background-color: #151515; } /* Deep Charcoal */
+        .color-accent-blue { background-color: #00AEEF; } /* Electric/Chrome Blue */
+        .text-accent-blue { color: #00AEEF; }
+        
+        /* 3. Premium Interactions */
+        .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); }
+        .smooth-transition { transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+
+        /* 4. Animated Hero Background (High-Tech Grid Overlay) */
+        .hero-bg {
+            background-image: linear-gradient(rgba(21, 21, 21, 0.8), rgba(21, 21, 21, 0.9)), 
+                              url('https://placehold.co/1920x1080/151515/00AEEF?text=HIGH-TECH+COACH');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        /* 5. Real-Time Tracking Animation (Bus Icon Movement) */
+        #bus-tracker-map {
+            background-image: url('https://placehold.co/800x400/292929/FFFFFF?text=Simulated+Route+Map');
+            background-size: cover;
+            background-position: center;
+        }
+        .bus-icon {
+            animation: trackBus 10s linear infinite;
+        }
+        @keyframes trackBus {
+            0% { left: 5%; top: 50%; opacity: 1; }
+            25% { left: 30%; top: 40%; opacity: 1; }
+            50% { left: 55%; top: 50%; opacity: 1; }
+            75% { left: 80%; top: 40%; opacity: 1; }
+            100% { left: 95%; top: 50%; opacity: 1; }
+        }
+    </style>
+</head>
+<body class="smooth-transition">
+
+    <!-- Tailwind Config for Custom Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-dark': '#151515', /* Deep Charcoal */
+                        'primary-light': '#FFFFFF',
+                        'accent-blue': '#00AEEF', /* Chrome Blue */
+                        'bg-dark-secondary': '#292929',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Sticky Header -->
+    <header class="color-primary-dark sticky top-0 z-50 shadow-2xl smooth-transition">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo (Aesthetic Speed/Precision SVG) -->
+            <a href="#home" data-page="home" class="nav-link flex items-center space-x-3 cursor-pointer">
+                <div class="h-10 w-10 bg-accent-blue rounded-full flex items-center justify-center p-1">
+                    <!-- Abstract Speed Vector Logo -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap">
+                        <path d="M12 2v8l-4 4 4 8 4-4-4-8z"/>
+                    </svg>
+                </div>
+                <span class="text-white text-3xl font-bold heading-font tracking-widest">JOBNER</span>
+                <span class="text-accent-blue text-3xl font-light heading-font">BUS</span>
+            </a>
+            
+            <!-- Desktop Navigation Links -->
+            <div class="hidden md:flex space-x-10 text-sm font-medium uppercase tracking-widest">
+                <a href="#home" data-page="home" class="nav-link text-white hover:text-accent-blue smooth-transition">Home</a>
+                <a href="#services" data-page="services" class="nav-link text-white hover:text-accent-blue smooth-transition">Services</a>
+                <a href="#fleet" data-page="fleet" class="nav-link text-white hover:text-accent-blue smooth-transition">Fleet</a>
+                <a href="#about" data-page="about" class="nav-link text-white hover:text-accent-blue smooth-transition">Legacy</a>
+                <a href="#contact" data-page="contact" class="nav-link text-white hover:text-accent-blue smooth-transition">Support</a>
+                <a href="tel:8306420502" class="text-accent-blue border-2 border-accent-blue px-3 py-1 rounded-full hover:bg-accent-blue hover:text-primary-dark smooth-transition">Book Instantly</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-toggle" class="md:hidden text-accent-blue focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu (Dropdown) -->
+        <div id="mobile-menu" class="hidden md:hidden absolute w-full color-primary-dark/95 shadow-xl">
+            <div class="space-y-3 p-4 uppercase tracking-widest">
+                <a href="#home" data-page="home" class="nav-link block text-white hover:text-accent-blue smooth-transition border-b border-primary-dark/50 pb-2">Home</a>
+                <a href="#services" data-page="services" class="nav-link block text-white hover:text-accent-blue smooth-transition border-b border-primary-dark/50 pb-2">Services</a>
+                <a href="#fleet" data-page="fleet" class="nav-link block text-white hover:text-accent-blue smooth-transition border-b border-primary-dark/50 pb-2">Fleet</a>
+                <a href="#about" data-page="about" class="nav-link block text-white hover:text-accent-blue smooth-transition border-b border-primary-dark/50 pb-2">Legacy</a>
+                <a href="#contact" data-page="contact" class="nav-link block text-white hover:text-accent-blue smooth-transition pb-2">Support</a>
+                <a href="tel:8306420502" class="block text-center color-accent-blue text-primary-dark font-bold py-2 rounded-lg mt-3">CALL: 8306420502</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area (Dynamic Page Swapping) -->
+    <main id="app-content" class="min-h-screen"></main>
+
+    <!-- Footer -->
+    <footer id="contact-section" class="color-primary-dark text-white py-12 md:py-16">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-5 gap-10">
+            
+            <!-- Logo/Mission -->
+            <div class="col-span-2 md:col-span-2">
+                <h4 class="text-3xl font-bold heading-font text-accent-blue mb-4">JOBNER BUS</h4>
+                <p class="text-gray-400 text-sm font-light leading-relaxed">Precision travel redefined. Connecting communities with high-tech comfort and unwavering reliability.</p>
+                <div class="mt-4 flex space-x-4">
+                    <!-- Social Media Icons (Placeholders) -->
+                    <a href="#" class="text-gray-500 hover:text-accent-blue smooth-transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                    <a href="#" class="text-gray-500 hover:text-accent-blue smooth-transition"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-span-1">
+                <h5 class="text-base font-bold heading-font text-accent-blue uppercase mb-3 tracking-widest">Navigation</h5>
+                <a href="#services" data-page="services" class="nav-link block text-gray-400 hover:text-white smooth-transition text-sm mb-2">Service Collections</a>
+                <a href="#booking" data-page="booking" class="nav-link block text-gray-400 hover:text-white smooth-transition text-sm mb-2">Live Reservations</a>
+                <a href="#about" data-page="about" class="nav-link block text-gray-400 hover:text-white smooth-transition text-sm mb-2">Company Legacy</a>
+            </div>
+
+            <!-- Contact -->
+            <div class="col-span-1 md:col-span-2">
+                <h5 class="text-base font-bold heading-font text-accent-blue uppercase mb-3 tracking-widest">Support Line</h5>
+                <p class="text-white text-lg mb-2 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00AEEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone mr-2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <a href="tel:8306420502" class="text-accent-blue hover:text-white smooth-transition font-medium">8306420502</a>
+                </p>
+                <p class="text-gray-400 text-sm">Office: 5-B, Transport Nagar, Alwar, RJ 301030</p>
+            </div>
+            
+            <!-- Newsletter Signup (Simplified) -->
+            <div class="col-span-2 mt-8 pt-6 border-t border-bg-dark-secondary/50">
+                <h5 class="text-base font-bold heading-font text-accent-blue uppercase mb-3 tracking-widest">Performance Updates</h5>
+                <form onsubmit="handleNewsletter(event)">
+                    <div class="flex">
+                        <input type="email" id="newsletter-email" placeholder="Your Email for Route Alerts" required class="w-full p-3 bg-primary-dark/70 border border-bg-dark-secondary/50 text-white focus:border-accent-blue rounded-l-lg outline-none">
+                        <button type="submit" class="bg-accent-blue text-primary-dark font-bold px-4 rounded-r-lg hover:bg-opacity-80 smooth-transition">GO</button>
+                    </div>
+                    <div id="newsletter-message" class="text-sm mt-2 text-center hidden"></div>
+                </form>
+            </div>
+        </div>
+        <div class="mt-8 pt-6 border-t border-gray-700/50 text-center">
+            <p class="text-gray-500 text-xs tracking-wider font-light">&copy; 2025 Jobner Bus Service. Precision in Motion.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for SPA and Advanced Functionality -->
+    <script>
+        // --- Mock Data ---
+        const MOCK_ROUTES = [
+            { source: 'Alwar', dest: 'Jobner', type: 'Executive Coach', price: 150, time: '06:00 AM' },
+            { source: 'Alwar', dest: 'Jaipur', type: 'Luxury Sleeper', price: 550, time: '11:00 PM' },
+            { source: 'Jaipur', dest: 'Alwar', type: 'Executive Coach', price: 250, time: '02:00 PM' },
+            { source: 'Alwar', dest: 'Bharatpur', type: 'Standard Express', price: 180, time: '07:30 AM' },
+            { source: 'Bharatpur', dest: 'Jaipur', type: 'Luxury Sleeper', price: 300, time: '08:00 AM' },
+        ];
+
+        const MOCK_FLEET = [
+            { name: 'A/C Executive Class', capacity: 45, image: 'https://placehold.co/800x600/00AEEF/151515?text=Executive+Interior' },
+            { name: 'Luxury Sleeper Suite', capacity: 30, image: 'https://placehold.co/800x600/00AEEF/151515?text=Sleeper+Cabin' },
+            { name: 'Premium Charter Mini', capacity: 20, image: 'https://placehold.co/800x600/00AEEF/151515?text=Premium+Mini' },
+        ];
+        
+        const MOCK_TESTIMONIALS = [
+            { quote: "Flawless execution. This is the definition of premium regional travel.", client: "Ramesh K., Alwar", rating: 5 },
+            { quote: "The punctuality is incredible. Never going back to standard buses.", client: "Anjali S., Jaipur", rating: 5 },
+            { quote: "High-tech comfort and smooth driving. Five stars for Jobner Bus Service.", client: "Priya M., Bharatpur", rating: 4 },
+        ];
+
+        // --- Core Content Generators ---
+
+        function generateHomePage() {
+            const currentYear = new Date().getFullYear();
+            const experienceYears = currentYear - 2005; 
+
+            return `
+                <!-- Hero Section: High Contrast, Animated CTA -->
+                <section class="hero-bg h-[60vh] md:h-[90vh] flex items-center justify-center text-center px-4 color-primary-dark">
+                    <div class="p-4 md:p-0 max-w-4xl mx-auto smooth-transition">
+                        <h1 class="text-4xl md:text-7xl heading-font font-extrabold text-white mb-4 uppercase tracking-tight smooth-transition">
+                            Precision Travel, <span class="text-accent-blue">Redefined</span>
+                        </h1>
+                        <p class="text-lg md:text-xl font-light text-gray-400 mb-8 max-w-3xl mx-auto">
+                            Unwavering commitment to safety and efficiency. Book your superior journey now.
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                            <a href="#booking" data-page="booking" class="nav-link bg-accent-blue text-primary-dark heading-font font-bold py-3 px-8 rounded-lg hover:bg-opacity-80 hover-lift smooth-transition uppercase tracking-widest text-sm md:text-base">
+                                Reserve Your Seat
+                            </a>
+                            <a href="tel:8306420502" class="border-2 border-white text-white heading-font font-bold py-3 px-8 rounded-lg hover:bg-white hover:text-primary-dark hover-lift smooth-transition uppercase tracking-widest text-sm md:text-base">
+                                Call for Assistance
+                            </a>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Animated Counters and USP -->
+                <section class="bg-primary-light text-primary-dark py-16 md:py-20 text-center border-t border-gray-200">
+                    <div class="max-w-7xl mx-auto px-4">
+                        <h2 class="text-xl heading-font font-semibold text-accent-blue mb-12 uppercase tracking-[0.3em]">Performance Metrics</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                            ${generateAnimatedCounter(experienceYears * 1000, 'Passengers Carried', '+', 'text-4xl text-primary-dark')}
+                            ${generateAnimatedCounter(experienceYears, 'Years of Operation', '+', 'text-4xl text-primary-dark')}
+                            ${generateAnimatedCounter(99.9, 'On-Time Departure', '%', 'text-4xl text-primary-dark', 0.1)}
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Testimonials Slider -->
+                <section class="color-primary-dark py-16 md:py-20 text-white">
+                    <div class="max-w-4xl mx-auto px-4">
+                        <h2 class="text-xl heading-font font-semibold text-accent-blue text-center uppercase tracking-[0.3em] mb-4">Client Feedback</h2>
+                        <h3 class="text-3xl heading-font font-bold text-center mb-10">What The Industry Says</h3>
+                        <div id="testimonial-carousel" class="relative overflow-hidden h-40">
+                            ${MOCK_TESTIMONIALS.map((t, i) => generateTestimonial(t, i)).join('')}
+                        </div>
+                        <div class="flex justify-center mt-6 space-x-2">
+                            <button onclick="prevTestimonial()" class="text-gray-400 hover:text-accent-blue smooth-transition"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg></button>
+                            <button onclick="nextTestimonial()" class="text-gray-400 hover:text-accent-blue smooth-transition"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg></button>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        function generateServicesPage() {
+            return `
+                <section class="color-primary-dark py-16 md:py-24 text-center text-white">
+                    <h2 class="text-xl heading-font font-semibold text-accent-blue uppercase tracking-[0.3em] mb-3">Service Collections</h2>
+                    <h3 class="text-4xl md:text-5xl heading-font font-bold mb-16">The Jobner Standard of Mobility</h3>
+                    
+                    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-10">
+                        ${generateServiceCard('Executive Intercity', 'Daily scheduled routes with guaranteed A/C comfort and on-board charging points.', 'https://placehold.co/600x400/00AEEF/151515?text=Executive', 'bg-bg-dark-secondary hover-lift smooth-transition')}
+                        ${generateServiceCard('Luxury Sleeper Suites', 'Private 2+1 cabins designed for maximum rest on overnight journeys. Complimentary amenities included.', 'https://placehold.co/600x400/00AEEF/151515?text=Sleeper', 'bg-bg-dark-secondary hover-lift smooth-transition')}
+                        ${generateServiceCard('Private Charter', 'Dedicated, branded coaches for corporate, educational, or event group bookings.', 'https://placehold.co/600x400/00AEEF/151515?text=Charter', 'bg-bg-dark-secondary hover-lift smooth-transition')}
+                    </div>
+
+                    <!-- Pricing Table Section -->
+                    <div class="max-w-7xl mx-auto px-4 mt-20">
+                        <h3 class="text-3xl heading-font font-bold text-accent-blue mb-8">Route Schedule & Fares</h3>
+                        <div class="overflow-x-auto rounded-xl shadow-2xl">
+                            <table class="min-w-full bg-primary-dark/90 text-white border border-accent-blue/20">
+                                <thead class="border-b-2 border-accent-blue">
+                                    <tr>
+                                        <th class="px-4 py-3 text-left heading-font text-sm uppercase tracking-wider">Route</th>
+                                        <th class="px-4 py-3 text-left heading-font text-sm uppercase tracking-wider">Type</th>
+                                        <th class="px-4 py-3 text-left heading-font text-sm uppercase tracking-wider">Departure</th>
+                                        <th class="px-4 py-3 text-right heading-font text-sm uppercase tracking-wider">Starting Fare (INR)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${MOCK_ROUTES.map((route, index) => `
+                                        <tr class="border-b border-primary-dark/50 hover:bg-bg-dark-secondary/80 smooth-transition">
+                                            <td class="px-4 py-3 font-medium text-white">${route.source} → ${route.dest}</td>
+                                            <td class="px-4 py-3 text-sm text-gray-400">${route.type}</td>
+                                            <td class="px-4 py-3 text-sm text-gray-400">${route.time}</td>
+                                            <td class="px-4 py-3 text-right text-lg font-bold text-accent-blue">₹${route.price.toFixed(0)}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-6 font-light">Fares are dynamic. Please use the Reservation platform for confirmed pricing.</p>
+                    </div>
+                </section>
+            `;
+        }
+
+        function generateFleetPage() {
+            return `
+                <section class="bg-primary-light py-16 md:py-24 text-primary-dark">
+                    <div class="max-w-7xl mx-auto px-4">
+                        <h2 class="text-xl heading-font font-semibold text-accent-blue uppercase tracking-[0.3em] mb-3 text-center">Engineering Perfection</h2>
+                        <h3 class="text-4xl md:text-5xl heading-font font-bold text-center mb-16">The Jobner Fleet Showcase</h3>
+                        
+                        <!-- Fleet Showcase (Interactive Slider Simulation) -->
+                        <div id="fleet-slider" class="relative overflow-hidden h-96 md:h-[600px] rounded-xl shadow-2xl color-primary-dark">
+                            ${MOCK_FLEET.map((fleet, index) => generateFleetSlide(fleet, index)).join('')}
+                        </div>
+                        <div class="flex justify-center mt-6 space-x-3">
+                            ${MOCK_FLEET.map((_, index) => `<button onclick="goToSlide(${index})" class="slide-dot w-3 h-3 rounded-full bg-gray-400 hover:bg-accent-blue smooth-transition"></button>`).join('')}
+                        </div>
+                        
+                        <!-- Key Fleet Features Grid -->
+                        <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                            <div class="p-6 bg-white rounded-xl shadow-xl hover-lift border-t-4 border-accent-blue">
+                                <span class="text-3xl block text-accent-blue mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cpu mx-auto"><rect width="16" height="16" x="4" y="4" rx="2"/><path d="M9 9h6v6H9z"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M17 17h3"/><path d="M17 7h3"/><path d="M4 7h3"/><path d="M4 17h3"/></svg></span>
+                                <p class="font-semibold heading-font text-sm uppercase tracking-wide">Telemetry Monitored</p>
+                            </div>
+                            <div class="p-6 bg-white rounded-xl shadow-xl hover-lift border-t-4 border-accent-blue">
+                                <span class="text-3xl block text-accent-blue mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-seat-recline-normal mx-auto"><path d="M5 14v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/><path d="M15 14h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6z"/></svg></span>
+                                <p class="font-semibold heading-font text-sm uppercase tracking-wide">Ergonomic Seating</p>
+                            </div>
+                            <div class="p-6 bg-white rounded-xl shadow-xl hover-lift border-t-4 border-accent-blue">
+                                <span class="text-3xl block text-accent-blue mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-battery-full mx-auto"><rect width="18" height="12" x="2" y="6" rx="2"/><line x1="22" x2="22" y1="11" y2="13"/></svg></span>
+                                <p class="font-semibold heading-font text-sm uppercase tracking-wide">High Power Ports</p>
+                            </div>
+                            <div class="p-6 bg-white rounded-xl shadow-xl hover-lift border-t-4 border-accent-blue">
+                                <span class="text-3xl block text-accent-blue mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-locate-fixed mx-auto"><line x1="2" x2="5" y1="12" y2="12"/><line x1="19" x2="22" y1="12" y2="12"/><line x1="12" x2="12" y1="2" y2="5"/><line x1="12" x2="12" y1="19" y2="22"/><path d="M12 18a6 6 0 0 0 0-12"/></svg></span>
+                                <p class="font-semibold heading-font text-sm uppercase tracking-wide">GPS Monitored</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+        
+        function generateAboutPage() {
+            return `
+                <section class="color-primary-dark py-16 md:py-24 text-white">
+                    <div class="max-w-6xl mx-auto px-4">
+                        <h2 class="text-xl heading-font font-semibold text-accent-blue uppercase tracking-[0.3em] mb-3">Our Legacy of Excellence</h2>
+                        <h3 class="text-4xl md:text-5xl heading-font font-bold mb-10">Jobner Bus Service Heritage</h3>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                            <!-- Image Placeholder -->
+                            <div class="h-64 md:h-96 rounded-xl overflow-hidden shadow-2xl hover-lift">
+                                <img src="https://placehold.co/800x600/00AEEF/151515?text=Founder+Vision" alt="Jobner Bus Heritage" class="w-full h-full object-cover">
+                            </div>
+
+                            <!-- Text Content -->
+                            <div class="space-y-6">
+                                <p class="text-lg font-light leading-relaxed text-gray-300">
+                                    Since ${new Date().getFullYear() - 20}, our operational mandate has been simple: eliminate the compromises in regional travel. We combine the **discipline of technology** with personalized service to deliver journeys that are not merely transfers, but experiences.
+                                </p>
+                                <blockquote class="border-l-4 border-accent-blue pl-4 italic text-gray-400">
+                                    "We don't chase routes; we engineer efficient connections. Our legacy is built on the time we save our passengers."
+                                </blockquote>
+                                <ul class="space-y-3 text-sm font-medium">
+                                    <li class="flex items-center space-x-2 text-accent-blue"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/></svg><span>Certified ISO Safety Standards</span></li>
+                                    <li class="flex items-center space-x-2 text-accent-blue"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/></svg><span>Dedicated Driver Training Program</span></li>
+                                </ul>
+                                <a href="#fleet" data-page="fleet" class="nav-link bg-accent-blue text-primary-dark heading-font font-bold py-3 px-6 rounded-lg hover-lift smooth-transition uppercase tracking-widest text-sm inline-block">
+                                    See Our Standards
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        function generateBookingPage() {
+            return `
+                <section class="bg-primary-light py-16 md:py-24 text-primary-dark">
+                    <div class="max-w-5xl mx-auto px-4">
+                        <h2 class="text-xl heading-font font-semibold text-accent-blue uppercase tracking-[0.3em] mb-3 text-center">Reservation Interface</h2>
+                        <h3 class="text-4xl heading-font font-bold text-center mb-10">Instant Seat Reservation</h3>
+
+                        <div class="bg-white p-6 md:p-10 rounded-xl shadow-2xl border border-gray-100 hover-lift">
+                            <!-- Booking Form (Simulated Dynamic Pricing) -->
+                            <form id="booking-form" onsubmit="handleBooking(event)">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                                    <!-- Pickup/Drop -->
+                                    <div>
+                                        <label for="pickup-location" class="block text-sm font-medium heading-font text-gray-700 mb-2 uppercase">Departure City</label>
+                                        <input type="text" id="pickup-location" required list="locations" placeholder="e.g., Alwar" class="w-full p-3 border border-gray-300 rounded-lg focus:border-accent-blue focus:ring-1 focus:ring-accent-blue smooth-transition">
+                                        <datalist id="locations">
+                                            <option value="Alwar"><option value="Jobner"><option value="Jaipur"><option value="Bharatpur">
+                                        </datalist>
+                                    </div>
+                                    <div>
+                                        <label for="drop-location" class="block text-sm font-medium heading-font text-gray-700 mb-2 uppercase">Arrival City</label>
+                                        <input type="text" id="drop-location" required list="locations" placeholder="e.g., Jaipur" class="w-full p-3 border border-gray-300 rounded-lg focus:border-accent-blue focus:ring-1 focus:ring-accent-blue smooth-transition">
+                                    </div>
+
+                                    <!-- Date/Passengers -->
+                                    <div>
+                                        <label for="travel-date" class="block text-sm font-medium heading-font text-gray-700 mb-2 uppercase">Date of Travel</label>
+                                        <input type="date" id="travel-date" required class="w-full p-3 border border-gray-300 rounded-lg focus:border-accent-blue focus:ring-1 focus:ring-accent-blue smooth-transition">
+                                    </div>
+                                    <div>
+                                        <label for="passenger-count" class="block text-sm font-medium heading-font text-gray-700 mb-2 uppercase">Passengers</label>
+                                        <input type="number" id="passenger-count" required min="1" max="10" value="1" class="w-full p-3 border border-gray-300 rounded-lg focus:border-accent-blue focus:ring-1 focus:ring-accent-blue smooth-transition">
+                                    </div>
+                                    
+                                    <!-- Bus Type/Class -->
+                                    <div class="md:col-span-2">
+                                        <label for="bus-class" class="block text-sm font-medium heading-font text-gray-700 mb-2 uppercase">Service Class</label>
+                                        <select id="bus-class" required class="w-full p-3 border border-gray-300 rounded-lg focus:border-accent-blue focus:ring-1 focus:ring-accent-blue smooth-transition appearance-none">
+                                            <option value="executive">Executive Coach (A/C)</option>
+                                            <option value="sleeper">Luxury Sleeper</option>
+                                            <option value="standard">Standard Express</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <!-- Dynamic Price Display -->
+                                <div id="price-display" class="bg-primary-dark text-white p-4 rounded-lg flex justify-between items-center my-6 shadow-md">
+                                    <span class="heading-font font-semibold uppercase tracking-wider text-sm">Estimated Total Fare:</span>
+                                    <span id="calculated-price" class="text-accent-blue text-2xl heading-font font-bold">₹ 0</span>
+                                </div>
+
+                                <button type="submit" class="w-full color-accent-blue text-primary-dark heading-font font-bold py-4 rounded-lg hover-lift smooth-transition uppercase tracking-widest text-lg">
+                                    Proceed to Reservation
+                                </button>
+                                
+                                <div id="booking-message" class="mt-4 p-3 rounded-lg text-center hidden smooth-transition"></div>
+                            </form>
+                        </div>
+
+                        <!-- Real-Time Tracking Section -->
+                        <div class="mt-16 text-center color-primary-dark p-8 rounded-xl shadow-2xl text-white">
+                            <h3 class="text-3xl heading-font font-bold text-accent-blue mb-4">Live Route Status (Simulated)</h3>
+                            <p class="text-gray-400 mb-6">Real-time GPS monitoring for your peace of mind.</p>
+                            <div id="bus-tracker-map" class="relative w-full h-48 md:h-80 rounded-lg overflow-hidden shadow-inner border border-accent-blue/50">
+                                <div class="bus-icon absolute w-5 h-5 color-accent-blue rounded-full flex items-center justify-center shadow-lg border-2 border-white" style="transform: translate(-50%, -50%);">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#151515" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bus"><path d="M10 6H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-5"/><path d="M7 6v14"/><path d="M15 6v14"/><path d="M5 20h2"/><path d="M17 20h2"/><path d="M15 6h2"/><path d="M7 6h2"/></svg>
+                                </div>
+                            </div>
+                            <p class="text-sm text-gray-500 mt-4">Data is refreshed every 10 seconds (Simulated).</p>
+                        </div>
+
+                    </div>
+                </section>
+            `;
+        }
+        
+        // --- Utility Functions for Premium Content ---
+
+        function generateAnimatedCounter(targetValue, label, suffix = '', extraClasses = '', decimalPlaces = 0) {
+            const id = 'counter-' + label.replace(/\s/g, '');
+            // Initialize with the final value for stability if JS fails, but data-target is for JS
+            const initialValue = targetValue.toFixed(decimalPlaces); 
+            return `
+                <div class="p-6">
+                    <div id="${id}" class="${extraClasses} font-extrabold heading-font text-accent-blue smooth-transition" data-target="${targetValue}" data-decimal="${decimalPlaces}">${initialValue}${suffix}</div>
+                    <p class="text-gray-700 mt-2 text-sm uppercase tracking-wider">${label}</p>
+                </div>
+            `;
+        }
+        
+        function generateServiceCard(title, description, imageURL, classes) {
+            return `
+                <div class="${classes} bg-bg-dark-secondary text-white rounded-xl shadow-xl overflow-hidden text-left border-t-4 border-accent-blue/50">
+                    <img src="${imageURL}" alt="${title}" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="text-2xl heading-font font-bold mb-3 text-white">${title}</h4>
+                        <p class="text-gray-400 font-light mb-4">${description}</p>
+                        <a href="#booking" data-page="booking" class="nav-link text-accent-blue font-semibold text-sm hover:underline uppercase tracking-wide">Reserve Now →</a>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function generateTestimonial(testimonial, index) {
+            return `
+                <div class="testimonial-slide absolute top-0 left-0 w-full p-4 smooth-transition ${index === 0 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full'}" data-index="${index}">
+                    <div class="text-center">
+                        <p class="text-lg md:text-xl font-light italic mb-4 text-gray-300">
+                            "${testimonial.quote}"
+                        </p>
+                        <div class="text-accent-blue text-xl mb-3">
+                            ${'★'.repeat(testimonial.rating)}${'☆'.repeat(5 - testimonial.rating)}
+                        </div>
+                        <p class="font-semibold text-white heading-font uppercase tracking-wider text-sm">${testimonial.client}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function generateFleetSlide(fleet, index) {
+            return `
+                <div class="fleet-slide absolute w-full h-full flex flex-col md:flex-row items-center smooth-transition ${index === 0 ? 'opacity-100' : 'opacity-0'}" data-index="${index}">
+                    <div class="md:w-1/2 p-8 md:p-16 color-primary-dark h-full flex flex-col justify-center text-white">
+                        <h4 class="text-xl heading-font font-semibold text-accent-blue uppercase tracking-[0.3em] mb-3">VEHICLE CLASS</h4>
+                        <h3 class="text-3xl md:text-5xl heading-font font-bold text-white mb-6">${fleet.name}</h3>
+                        <p class="text-gray-400 font-light mb-8">Capacity: ${fleet.capacity} passengers. Optimized for comfort and digital access.</p>
+                        <a href="#booking" data-page="booking" class="nav-link bg-accent-blue text-primary-dark heading-font font-bold py-3 px-8 rounded-lg hover-lift smooth-transition uppercase tracking-widest w-fit">
+                            Book This Class
+                        </a>
+                    </div>
+                    <div class="md:w-1/2 h-full">
+                        <img src="${fleet.image}" alt="${fleet.name}" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- STABILITY FOCUSED JS LOGIC ---
+
+        // Testimonial Logic
+        let currentTestimonialIndex = 0;
+        let testimonialInterval;
+
+        function updateTestimonial(newIndex) {
+            const slides = document.querySelectorAll('.testimonial-slide');
+            if (slides.length === 0) return; // Stability check
+
+            // Normalize index
+            if (newIndex >= slides.length) newIndex = 0;
+            if (newIndex < 0) newIndex = slides.length - 1;
+            currentTestimonialIndex = newIndex;
+
+            slides.forEach((slide, index) => {
+                slide.classList.remove('opacity-100', 'translate-x-0', 'translate-x-full', '-translate-x-full');
+                if (index === newIndex) {
+                    slide.classList.add('opacity-100', 'translate-x-0');
+                } else if (index < newIndex) {
+                    slide.classList.add('opacity-0', '-translate-x-full');
+                } else {
+                    slide.classList.add('opacity-0', 'translate-x-full');
+                }
+            });
+            
+            // Reset interval
+            clearInterval(testimonialInterval);
+            testimonialInterval = setInterval(nextTestimonial, 7000); 
+        }
+
+        function nextTestimonial() { updateTestimonial(currentTestimonialIndex + 1); }
+        function prevTestimonial() { updateTestimonial(currentTestimonialIndex - 1); }
+        
+        function goToSlide(index) {
+             const slides = document.querySelectorAll('.fleet-slide');
+             if (slides.length === 0) return; // Stability check
+             
+             slides.forEach((slide, i) => {
+                 slide.classList.remove('opacity-100');
+                 slide.classList.add('opacity-0');
+                 if (i === index) {
+                     slide.classList.remove('opacity-0');
+                     slide.classList.add('opacity-100');
+                 }
+             });
+        }
+
+        // Animation Counter Logic (Improved for Stability)
+        function animateCounter(element, target, duration, suffix, decimal) {
+            const start = 0;
+            let current = start;
+            const step = (target / duration) * 10;
+            const decimals = Math.pow(10, decimal);
+
+            function update() {
+                if (current < target) {
+                    current += step;
+                    element.textContent = (Math.round(current * decimals) / decimals).toFixed(decimal) + suffix;
+                    requestAnimationFrame(update);
+                } else {
+                    element.textContent = target.toFixed(decimal) + suffix;
+                }
+            }
+            update();
+        }
+        
+        function initCounters() {
+            document.querySelectorAll('[data-target]').forEach(el => {
+                const target = parseFloat(el.getAttribute('data-target'));
+                const decimal = parseInt(el.getAttribute('data-decimal')) || 0;
+                const suffix = el.textContent.replace(new RegExp(`[0-9\\.]+`), '');
+
+                // Animate only if target is not already set
+                if (parseFloat(el.textContent) === 0 || el.textContent.startsWith('0')) {
+                    animateCounter(el, target, 2500, suffix, decimal);
+                }
+            });
+        }
+
+        // Form Handlers
+        function handleBooking(event) {
+            event.preventDefault();
+            const messageBox = document.getElementById('booking-message');
+            messageBox.classList.remove('hidden', 'bg-red-100', 'text-red-700', 'bg-green-100', 'text-green-700');
+            
+            // SIMULATED REAL-WORLD FEEDBACK
+            messageBox.textContent = "Reservation Request Confirmed! Please call 8306420502 to finalize payment and receive your e-ticket.";
+            messageBox.classList.add('bg-accent-blue/10', 'text-accent-blue');
+            document.getElementById('booking-form').reset();
+            document.getElementById('calculated-price').textContent = '₹ 0'; 
+            messageBox.classList.remove('hidden');
+        }
+        
+        function handleInquiry(event) {
+            event.preventDefault();
+            const messageBox = document.getElementById('inquiry-message');
+            messageBox.classList.remove('hidden', 'bg-red-100', 'text-red-700', 'bg-green-100', 'text-green-700');
+            
+            setTimeout(() => {
+                messageBox.textContent = "Inquiry Sent! A support agent will contact you shortly.";
+                messageBox.classList.add('bg-accent-blue/10', 'text-accent-blue');
+                document.querySelector('#contact-section form').reset();
+            }, 500);
+            
+            messageBox.classList.remove('hidden');
+        }
+
+        function handleNewsletter(event) {
+            event.preventDefault();
+            const messageBox = document.getElementById('newsletter-message');
+            messageBox.classList.remove('hidden', 'text-red-500', 'text-green-500');
+            
+            setTimeout(() => {
+                messageBox.textContent = "Subscription active! You will now receive route and schedule alerts.";
+                messageBox.classList.add('text-accent-blue');
+                document.getElementById('newsletter-email').value = '';
+            }, 500);
+            
+            messageBox.classList.remove('hidden');
+        }
+
+        // Dynamic Pricing (Simulated)
+        function calculatePrice() {
+            const priceDisplay = document.getElementById('calculated-price');
+            if (!priceDisplay) return;
+
+            const pickup = document.getElementById('pickup-location')?.value.toLowerCase();
+            const drop = document.getElementById('drop-location')?.value.toLowerCase();
+            const count = parseInt(document.getElementById('passenger-count')?.value) || 1;
+            const serviceClass = document.getElementById('bus-class')?.value;
+
+            if (!pickup || !drop || pickup === drop) {
+                priceDisplay.textContent = '₹ 0';
+                return;
+            }
+
+            // Simple calculation based on complexity of route (Simulated API cost)
+            let basePrice = 200 + (Math.random() * 50); 
+            
+            if (pickup.includes('alwar') && drop.includes('jaipur') || pickup.includes('jaipur') && drop.includes('alwar')) {
+                basePrice = 350;
+            }
+
+            // Class Multipliers
+            if (serviceClass === 'executive') basePrice *= 1.4;
+            if (serviceClass === 'sleeper') basePrice *= 2.2;
+
+            const finalPrice = basePrice * count;
+            priceDisplay.textContent = `₹ ${Math.round(finalPrice)}`;
+        }
+        
+        function attachBookingListeners() {
+            const bookingInputs = document.querySelectorAll('#booking-form input, #booking-form select');
+            bookingInputs.forEach(input => input.addEventListener('input', calculatePrice));
+            calculatePrice(); // Initial calculation
+        }
+
+
+        // Master function to load content based on the page name (SPA Logic)
+        function renderPage(pageName) {
+            const contentDiv = document.getElementById('app-content');
+            let contentHTML = '';
+
+            // 1. Initial Cleanup
+            clearInterval(testimonialInterval);
+            document.body.classList.remove('color-primary-dark'); // Reset background for non-dark pages
+
+            switch (pageName) {
+                case 'home':
+                    contentHTML = generateHomePage();
+                    break;
+                case 'services':
+                    contentHTML = generateServicesPage();
+                    break;
+                case 'fleet':
+                    contentHTML = generateFleetPage();
+                    break;
+                case 'about':
+                    contentHTML = generateAboutPage();
+                    break;
+                case 'booking':
+                    contentHTML = generateBookingPage();
+                    break;
+                case 'contact':
+                    // Special case: Scroll to footer contact section
+                    document.getElementById('contact-section').scrollIntoView({ behavior: 'smooth' });
+                    return; 
+                default:
+                    contentHTML = generateHomePage();
+            }
+
+            // 2. Insert new HTML content
+            contentDiv.innerHTML = contentHTML;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // 3. Post-Render Initialization (CRUCIAL for stability)
+            if (pageName === 'home') {
+                // Use a short delay (0ms) to ensure DOM nodes are ready
+                setTimeout(() => {
+                    updateTestimonial(0); 
+                    initCounters();
+                }, 0); 
+            }
+            if (pageName === 'booking') {
+                setTimeout(() => {
+                    attachBookingListeners();
+                }, 0);
+            }
+            if (pageName === 'fleet') {
+                setTimeout(() => {
+                    goToSlide(0);
+                }, 0);
+            }
+            
+            // Close mobile menu
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+        }
+
+        // --- Event Listeners and Initialization ---
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (menuToggle) {
+                menuToggle.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Navigation Links Listener (Uses event delegation for all current and future .nav-link elements)
+            document.body.addEventListener('click', (e) => {
+                const link = e.target.closest('.nav-link');
+                if (link) {
+                    const page = link.getAttribute('data-page');
+                    if (page) {
+                        e.preventDefault();
+                        window.location.hash = page; 
+                        renderPage(page);
+                    }
+                }
+            });
+
+            // Handle browser back/forward buttons (history changes)
+            window.addEventListener('hashchange', () => {
+                const newPage = window.location.hash.substring(1) || 'home';
+                renderPage(newPage);
+            });
+
+            // Initial Page Load
+            const initialPage = window.location.hash.substring(1) || 'home';
+            renderPage(initialPage);
+        });
+    </script>
+
+</body>
+</html>
+
